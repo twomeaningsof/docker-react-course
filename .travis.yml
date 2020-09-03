@@ -1,0 +1,11 @@
+language: generic
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - docker build -t igor/docker-react-course -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true igor/docker-react-course npm run test
